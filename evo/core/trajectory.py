@@ -58,10 +58,16 @@ class PosePath3D(object):
                                       "& orientations_quat_wxyz or poses_se3")
         if positions_xyz is not None:
             self._positions_xyz = np.array(positions_xyz)
+            # TODO: make setting z to 0 parameterized option
+            if len(self._positions_xyz.shape) == 2:
+                self._positions_xyz[:, 2] = 0
         if orientations_quat_wxyz is not None:
             self._orientations_quat_wxyz = np.array(orientations_quat_wxyz)
         if poses_se3 is not None:
             self._poses_se3 = poses_se3
+            # TODO: make setting z to 0 parameterized option
+            for pose in self._poses_se3:
+                pose[2, 3] = 0
         self.meta = {} if meta is None else meta
 
     def __str__(self) -> str:

@@ -457,7 +457,7 @@ def run(args):
                                       SETTINGS.plot_axis_marker_scale)
             if ref_traj and synced and SETTINGS.plot_pose_correspondences:
                 plot.draw_correspondence_edges(
-                    ax_traj, traj, synced_refs[name], plot_mode, color=color,
+                    ax_traj, traj, synced_refs[name], plot_mode, color="red",
                     style=SETTINGS.plot_pose_correspondences_linestyle,
                     alpha=SETTINGS.plot_trajectory_alpha)
             plot.traj_xyz(axarr_xyz, traj, SETTINGS.plot_trajectory_linestyle,
