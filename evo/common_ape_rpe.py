@@ -162,8 +162,8 @@ def plot_result(args: argparse.Namespace, result: Result, traj_ref: PosePath3D,
     fig2.axes.append(ax)
 
     plot_collection = plot.PlotCollection(result.info["title"])
-    plot_collection.add_figure("raw", fig1)
     plot_collection.add_figure("map", fig2)
+    plot_collection.add_figure("raw", fig1)
     if args.plot:
         plot_collection.show()
     if args.save_plot:
