@@ -204,6 +204,12 @@ def ape(traj_ref: PosePath3D, traj_est: PosePath3D,
     logger.debug(SEP)
     logger.info(ape_result.pretty_str())
 
+    ape_threshold = 0.02
+    if ape_result.stats["max"] > ape_threshold:
+        logger.warning("max error {} exceeds {}".format(
+            ape_result.stats["max"], ape_threshold
+        ))
+
     ape_result.add_trajectory(ref_name, traj_ref)
     ape_result.add_trajectory(est_name, traj_est)
     if isinstance(traj_est, PoseTrajectory3D):
